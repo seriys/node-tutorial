@@ -1,0 +1,9 @@
+{
+  "script": "./bin/www",
+  "watch": ["routes", "modules"],
+  "ignore_watch": ["node_modules"],
+  "watch_options": {
+    "followSymlinks": false,
+    "usePolling": true
+  }
+}

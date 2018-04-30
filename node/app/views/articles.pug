@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Listing articles
+  table
+    tr
+      th Title
+      th Text
+      th
+    each article in articles
+      tr
+        td= article.title
+        td= article.text
+        td: a(href='articles/' + article.id) show
+    else
+      tr
+        td(colspan=3) No articles

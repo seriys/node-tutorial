@@ -3,8 +3,24 @@ services:
   node:
     build: node
     image: node-express-dev:1.0
+    tty: true
+    environment:
+      MYSQL_ROOT_PASSWORD: 'pass'
     volumes:
       - ./node/app:/usr/src/node-tutorial
     ports:
       - "3000:3000"
-
+    links:
+      - mysql
+  mysql:
+    image: mysql:8.0.11
+    environment:
+      MYSQL_ROOT_PASSWORD: 'pass'
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./mysql-confd:/etc/mysql/conf.d
+volumes:
+  mysql-data:
+    driver: local
